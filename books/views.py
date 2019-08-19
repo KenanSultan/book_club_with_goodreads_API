@@ -9,18 +9,21 @@ def vote_page(request):
         'books_in_vote': BookInVote.objects.all().order_by('-vote')
     }
     return render(request, 'book.html', context)
+    
 
 def search(request):
-    if request.method == 'POST':
-        name = request.POST.get('book_name')
-        context = {
-            'books_from_api': get_book_list(name),
-            'search_title': name
-        }
-        return render(request, 'search.html', context)
-            
-    else:
-        return render(request, 'search.html')
+   if request.method == 'POST':
+       name = request.POST.get('book_name')
+       books_from_api = get_book_list(name)
+       if len(books_from_api):
+           context = {
+               'books_from_api': get_book_list(name),
+               'search_title': name
+           }
+           return render(request, 'search.html', context)
+       else:
+           messages.info(request, 'Kitab tapilmadi.')
+   return render(request, 'search.html')
 
         
 def choose_book(request):
