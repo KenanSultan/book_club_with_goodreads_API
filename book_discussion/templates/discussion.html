@@ -27,7 +27,7 @@
                   Kitab haqda fikrinizi paylaşın:
                </div>
                <div class="input-group">
-                  <textarea name="comment" cols="60" rows="3" id="id_comment" name='comment'></textarea>
+                  <textarea name="comment" cols="60" rows="3" id="id_comment" name='comment' required></textarea>
                </div>
             </fieldset>
             <div class="input-group-append form group">
@@ -46,7 +46,7 @@
                <img class="rounded-circle" id="user-img-comment" src="{{ discussion.user.profile.image.url }}" alt="">
             </div>
             <div class="col-10 d-flex flex-column">
-               <div class='lead' style="color:rgb(31, 117, 28)"><a href="{% url 'userprofile' discussion.user.id %}">{{ discussion.user.first_name }}  {{discussion.user.last_name}}:</a></div>
+               <div class='lead'><a href="{% url 'userprofile' discussion.user.id %}" style="text-decoration:none"><span style="color:rgb(31, 117, 28);">{{ discussion.user.first_name }}  {{discussion.user.last_name}}:</span></a></div>
                <p class='text-dark'> {{ discussion.comment }}</p>
                <div>
                   <div class="ml-auto">
