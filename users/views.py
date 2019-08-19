@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdate
 from .models import Profile
+from books.models import ReadenBook
 
 # Create your views here.
 def register(request):
@@ -46,8 +47,12 @@ def editprofile(request):
         }
         return render(request, 'editprofile.html', context)
 
-def profile(request):
-    return render(request, 'profile.html')
+def profile(request, user_id):
+    readen_book = ReadenBook.objects.get(user = user_id)
+    context = {
+        'readen_book': readen_book
+    }
+    return render(request, 'profile.html', context)
 
 def userprofile(request, user_id):
     profile = Profile.objects.get(user__id = user_id)
