@@ -42,8 +42,8 @@
       <div class="col-md-8 offset-md-2">
          {% for discussion in discussions %}
          <div class='row border-bottom'>
-            <div class='col-2'>
-               <img class="w-25" src="{{ discussion.user.profile.image.url }}" alt="">
+            <div class='col-2 text-center py-2'>
+               <img class="rounded-circle" id="user-img-comment" src="{{ discussion.user.profile.image.url }}" alt="">
             </div>
             <div class="col-10 d-flex flex-column">
                <div class='lead' style="color:rgb(31, 117, 28)"><a href="{% url 'userprofile' discussion.user.id %}">{{ discussion.user.first_name }}  {{discussion.user.last_name}}:</a></div>

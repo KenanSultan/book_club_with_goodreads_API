@@ -9,10 +9,11 @@
       <legend class='text-dark text-center'>Müzakirə edilmiş kitablar</legend>
   </div>
   <div class="col-md-6 col-sm-12">
-      <form class="form-inline">
-          <input class="form-control mr-2 px-4 text-center" type="search" placeholder="kitabın adını daxil edin" aria-label="Search">
-          <button class="btn btn-outline-secondary px-3" type="submit">arxivdə axtar</button>
-        </form>
+      <form class="form-inline" method='post'>
+        {% csrf_token %}
+        <input class="form-control mr-2 px-4 text-center" type="search" name='book_name' placeholder="kitabın adını daxil edin" aria-label="Search">
+        <button class="btn btn-outline-secondary px-3" type="submit">arxivdə axtar</button>
+      </form>
   </div>
 </div>
     

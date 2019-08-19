@@ -88,7 +88,15 @@ def readen(request, id):
     return redirect('book-home')        
 
 def archive(request):
+    if request.method == 'POST':
+        name = request.POST.get('book_name')
+        books_in_vote = Book.objects.filter(discussed = True, title__icontains = name)
+        if not len(books_in_vote):
+            messages.info(request, 'Axtardiginiz kitap, muzakire olunmus kitablar arasinda yoxdur.')
+    else:
+        books_in_vote = Book.objects.filter(discussed = True)
+
     context = {
-        'books_in_vote': Book.objects.filter(discussed = True)
+        'books_in_vote': books_in_vote
     }
     return render(request, 'archive.html', context)
